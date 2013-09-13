@@ -12,8 +12,6 @@ var app = app || {};
         },
 
         initialize: function () {
-            this.listenTo(app.metrics, 'add', this.metricsGraphic);
-            this.listenTo(app.metrics, 'remove', this.metricsGraphic);
         },
 
         metricsClear: function () {

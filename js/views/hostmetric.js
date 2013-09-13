@@ -10,6 +10,8 @@ var app = app || {};
             'click .toggle': 'toggleMetric',
         },
         initialize: function () {
+            this.listenTo(app.metrics, 'add', this.metricsShow);
+            this.listenTo(app.metrics, 'remove', this.metricsShow);
             $('.search-query').quicksearch('ul li');
         },
         render: function() {
@@ -24,5 +26,9 @@ var app = app || {};
                 app.metrics.add(this.model)
             }
         },
+        metricsShow: function () {
+            var view = new app.MetricView();
+            view.metricsGraphic();
+        }
     });
 })(jQuery);
