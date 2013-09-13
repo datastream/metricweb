@@ -11,6 +11,8 @@ var app = app || {};
         },
         initialize: function () {
             $('.search-query').quicksearch('ul li');
+            this.listenTo(app.metrics, 'add', this.metricsShow);
+            this.listenTo(app.metrics, 'remove', this.metricsShow);
         },
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
@@ -23,6 +25,11 @@ var app = app || {};
             } else {
                 app.metrics.add(this.model)
             }
+        },
+        metricsShow: function() {
+            var view = app.MetricView();
+            $('#metricgraphic').html('');
+            view.metricsGraphic();
         },
     });
 })(jQuery);
