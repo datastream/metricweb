@@ -15,6 +15,7 @@ var app = app || {};
             this.$main = this.$('#main');
             this.listenTo(app.hostmetrics, 'reset', this.hostmetricsShow);
             this.listenTo(app.metrics, 'reset', this.metricsShow);
+            this.listenTo(app.metrics, 'update', this.metricsFresh);
             this.render();
         },
 
@@ -44,6 +45,26 @@ var app = app || {};
         metricsShow: function() {
             var view = new app.MetricView();
             view.metricsChart();
+        },
+        metricsFresh: function() {
+            var metric_list = '';
+            items = app.hostmetrics.where({state: true})
+            for (var i = 0; i < items.length; i++) {
+                if (metric_list.length > 0) {
+                    metric_list += ',' + items[i].get('metric_name');
+                } else {
+                    metric_list = items[i].get('metric_name');
+                }
+            }
+            if (metric_list.length > 0) {
+                app.metrics.url = app.metrics.url_api + metric_list;
+                var setHeader = function (xhr) {
+                    xhr.setRequestHeader('Accept', 'application/json');
+                };
+                app.metrics.fetch({ beforeSend: setHeader, reset: true});
+            } else {
+                $('#chart').hide();
+            }
         },
     });
 })(jQuery);
