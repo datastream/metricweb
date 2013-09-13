@@ -48,7 +48,7 @@ var app = app || {};
         },
         metricsFresh: function() {
             var metric_list = '';
-            items = app.hostmetrics.where({state: true})
+            var items = app.hostmetrics.where({state: true})
             for (var i = 0; i < items.length; i++) {
                 if (metric_list.length > 0) {
                     metric_list += ',' + items[i].get('metric_name');
