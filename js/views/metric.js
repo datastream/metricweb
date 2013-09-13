@@ -51,7 +51,7 @@ var app = app || {};
                 chart.yAxis.tickFormat(function(d) {
                     return  d3.format(',.2f')(d)
                 });
-                d3.select('#chart svg').datum(app.metrics.toJSON())
+                d3.select('#chart svg').datum(JSON.stringify(app.metrics))
                     .transition().duration(500).call(chart);
 
                 nv.utils.windowResize(chart.update);
