@@ -14,8 +14,7 @@ var app = app || {};
             this.$input = this.$('#search-host');
             this.$main = this.$('#main');
             this.listenTo(app.hostmetrics, 'reset', this.hostmetricsShow);
-            this.listenTo(app.hostmetrics, 'change', this.metricsShow);
-            this.listenTo(app.metrics, 'change', this.metricsShow);
+            this.listenTo(app.metrics, 'reset', this.metricsShow);
             this.render();
         },
 
