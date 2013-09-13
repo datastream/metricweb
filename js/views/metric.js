@@ -15,7 +15,7 @@ var app = app || {};
         },
 
         metricsClear: function () {
-            this.collection.reset();
+            app.metrics.reset();
             this.$('#graph').hide();
         },
 
