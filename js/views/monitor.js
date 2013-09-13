@@ -14,6 +14,8 @@ var app = app || {};
             this.$input = this.$('#search-host');
             this.$main = this.$('#main');
             this.listenTo(app.hostmetrics, 'reset', this.hostmetricsShow);
+            this.listenTo(app.hostmetrics, 'change', this.metricsShow);
+            this.listenTo(app.metrics, 'change', this.metricsShow);
             this.render();
         },
 
@@ -39,6 +41,10 @@ var app = app || {};
         hostmetricsShow: function () {
             this.$('#metric_list').html('');
             app.hostmetrics.each(this.oneHostMetric, this);
+        },
+        metricsShow: function() {
+            var view = new app.MetricView();
+            view.metricsGraphic();
         },
     });
 })(jQuery);

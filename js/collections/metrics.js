@@ -5,6 +5,7 @@ var app = app || {};
     'use strict';
     var Metrics = Backbone.Collection.extend({
         model: app.Metric,
+        url_api: '/api/v1/metric?metrics=',
     });
     app.metrics = new Metrics();
 })();
