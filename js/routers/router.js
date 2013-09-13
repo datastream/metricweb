@@ -9,18 +9,19 @@ var app = app || {};
             'metricsgraphic/:name': 'toggleMetric',
         },
         toggleMetric: function(name) {
-            items = app.hostmetrics.where({metric:name});
+            var items = app.hostmetrics.where({metric:name});
             if (items.length > 0) {
                 items[0].save({
                     hidden: !this.get('hidden')
                 });
             }
             var metric_list = '';
-            app.hostmetrics.where({hidden: false}).each(function(metric) {
+            items = app.hostmetrics.where({hidden: false})
+            for (var i = 0; i < items.length; i++) {
                 if (metric_list.length > 0) {
-                    metric_list += ',' + metric.get('metric');
+                    metric_list += ',' + items[i].get('metric');
                 } else {
-                    metric_list = metric.get('metric');
+                    metric_list = items[i].get('metric');
                 }
             });
             app.metrics.url = app.metrics.url_api + metric_list
