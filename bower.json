@@ -1,0 +1,14 @@
+{
+  "name": "metrictools-web",
+  "version": "0.0.0",
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "underscore": "~1.4.4",
+    "jquery": "~1.9.1",
+    "bootstrap": "~3.0",
+    "d3.js": "~3.0.0",
+    "nv.d3.js": "~1.0.0",
+    "backbone.localStorage": "~1.1.0",
+    "jquery.quicksearch"
+  }
+}
