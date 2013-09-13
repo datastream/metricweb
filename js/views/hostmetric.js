@@ -10,7 +10,6 @@ var app = app || {};
             'click .toggle': 'toggleMetric',
         },
         initialize: function () {
-            this.listenTo(app.metrics, 'add', this.metricsShow);
             $('.search-query').quicksearch('ul li');
         },
         render: function() {
@@ -22,8 +21,7 @@ var app = app || {};
             if (items.length != 0) {
                 app.metrics.remove(items)
             } else {
-                var item = new app.Metric({key: this.model.get("metric")})
-                app.metrics.add(item)
+                app.metrics.add(this.model)
             }
         },
     });

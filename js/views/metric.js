@@ -3,53 +3,25 @@ var app = app || {};
 
 (function ($) {
     'use strict';
-    app.MonitorView = Backbone.View.extend({
-        el: '#main',
+    app.MetricView = Backbone.View.extend({
+        el: '#graphic',
 
         events: {
-            'keypress #search-host': 'searchHost',
-            'click .metrics': 'metricsShow',
-            'click #resetmetrics': 'metricsClear',
             'click #refreshmetrics': 'metricsShow',
+            'click #resetmetrics': 'metricsClear',
         },
 
         initialize: function () {
-            this.$input = this.$('#search-host');
-            this.$main = this.$('#main');
-            this.listenTo(app.hostmetrics, 'reset', this.hostmetricsShow);
-            this.listenTo(app.metrics, 'add', this.metricsShow);
-            this.listenTo(app.metrics, 'remove', this.metricsShow);
-            this.render();
+            this.listenTo(app.metrics, 'add', this.metricsGraphic);
+            this.listenTo(app.metrics, 'remove', this.metricsGraphic);
         },
 
-        render: function() {
-        },
-
-        searchHost: function (e) {
-            if (e.which !== ENTER_KEY || !this.$input.val().trim()) {
-                return;
-            }
-            app.hostmetrics.url = app.hostmetrics.url_api + this.$input.val().trim() + '/metric'
-            var setHeader = function (xhr) {
-                xhr.setRequestHeader('Accept', 'application/json');
-            };
-            app.hostmetrics.fetch({ beforeSend: setHeader, reset: true});
-            this.$input.val('');
-        },
-
-        oneHostMetric: function(hostmetric) {
-            var view = new app.HostMetricView({ model: hostmetric });
-            $('#metric_list').append(view.render().el);
-        },
-        hostmetricsShow: function () {
-            this.$('#metric_list').html('');
-            app.hostmetrics.each(this.oneHostMetric, this);
-        },
         metricsClear: function () {
             app.metrics.reset();
             this.$('#graph').hide();
         },
-        metricsShow: function () {
+
+        metricsGraphic: function () {
             var metric_list = '';
             app.metrics.each(function(metric) {
                 if (metric_list.length > 0) {

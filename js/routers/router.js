@@ -6,13 +6,11 @@ var app = app || {};
 
     var MonitorRouter = Backbone.Router.extend({
         routes: {
-            'graphic': 'showGraphic',
+            'metricsgraphic': 'showMetrics',
         },
-        showGraphic: function() {
-            app.MonitorView.metricsShow();
+        showMetrics: function() {
         },
     });
-
     app.MonitorRouter = new MonitorRouter();
     Backbone.history.start();
 })();
