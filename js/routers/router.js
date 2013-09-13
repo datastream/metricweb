@@ -24,7 +24,7 @@ var app = app || {};
                     metric_list = items[i].get('metric');
                 }
             });
-            app.metrics.url = app.metrics.url_api + metric_list
+            app.metrics.url = app.metrics.url_api + metric_list;
             var setHeader = function (xhr) {
                 xhr.setRequestHeader('Accept', 'application/json');
             };
