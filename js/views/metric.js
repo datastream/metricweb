@@ -21,11 +21,11 @@ var app = app || {};
 
         metricsGraphic: function () {
             var metric_list = '';
-            this.collection.each(function(metric) {
+            app.metrics.each(function(metric) {
                 if (metric_list.length > 0) {
-                    metric_list += ',' + metric.get('key');
+                    metric_list += ',' + metric.get('metric');
                 } else {
-                    metric_list = metric.get('key');
+                    metric_list = metric.get('metric');
                 }
             });
             if (metric_list.length > 0) {
