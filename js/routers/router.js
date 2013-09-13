@@ -30,7 +30,7 @@ var app = app || {};
                 };
                 app.metrics.fetch({ beforeSend: setHeader, reset: true});
             } else {
-                this.$('#chart').hide();
+                $('#chart').hide();
             }
         },
     });
