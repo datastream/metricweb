@@ -57,6 +57,7 @@ var app = app || {};
                 }
             }
             if (metric_list.length > 0) {
+                $('#chart').show();
                 app.metrics.url = app.metrics.url_api + metric_list;
                 var setHeader = function (xhr) {
                     xhr.setRequestHeader('Accept', 'application/json');

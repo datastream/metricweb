@@ -10,9 +10,10 @@ var app = app || {};
         },
         toggleMetric: function(name) {
             var items = app.hostmetrics.where({metric_name:name});
+            app.hostmetrics.remove(items);
             if (items.length > 0) {
-                app.hostmetrics.url = app.hostmetrics.url_api + items[0].get('host_name') + '/metric/' + items[0].get('metric_name');
-                items[0].save({state: !items[0].get('state')}, {patch: true});
+                items[0].set({state: !items[0].get('state')});
+                app.hostmetrics.add(items[0]);
             }
             app.metrics.trigger('update');
         },

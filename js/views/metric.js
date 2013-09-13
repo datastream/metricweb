@@ -14,6 +14,12 @@ var app = app || {};
         clearChart: function () {
             app.metrics.reset();
             this.$('#chart').hide();
+            var items = app.hostmetrics.where({state: true});
+            app.hostmetrics.remove(items);
+            for (var i = 0; i < items.length; i++) {
+                items[i].set({state: !items[i].get('state')});
+                app.hostmetrics.add(items[i]);
+            }
         },
         freshChart: function () {
             app.metrics.trigger('update');
@@ -38,7 +44,6 @@ var app = app || {};
                 nv.utils.windowResize(chart.update);
                 return chart;
             });
-            this.$('#chart').show();
         },
     });
 })(jQuery);
