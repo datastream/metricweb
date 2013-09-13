@@ -17,7 +17,7 @@ var app = app || {};
             return this;
         },
         toggleMetric: function() {
-            var items = app.metrics.where({key: this.model.get("metric")})
+            var items = app.metrics.where({metric: this.model.get("metric")})
             if (items.length != 0) {
                 app.metrics.remove(items)
             } else {

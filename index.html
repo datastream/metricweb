@@ -38,19 +38,22 @@
     </header>
 
     <div class="container">
-      <section id="main">
-        <label>Hostname:</label>
-        <input id="search-host" placeholder="Hostname" class="search-query" autofocus>
-        <!-- search host -->
+      <section id="monitorapp">
+        <section id="main">
+          <label>Hostname:</label>
+          <input id="search-host" placeholder="Hostname" class="search-query" autofocus>
+          <!-- search host -->
+        </section>
+        <!-- main -->
         <section id="hostmetric">
           <div class="col-md-3">
             <ul id="metric_list"></ul>
           </div>
         </section>
         <!-- host's metrics -->
-        <section id="graphic">
+        <section id="metricgraphic">
           <div class="col-md-9">
-            <div id="graph" style="display:none">
+            <div id="chart" style="display:none">
               <svg style="height: 400px"></svg>
               <a class="btn btn-lg btn-info" href="#refresh" id="refreshmetrics">Refesh</a>
               <a class="btn btn-lg btn-warning" href="#reset" id="resetmetrics">Reset</a>
@@ -59,7 +62,6 @@
         </section>
         <!-- host monitor dashboard -->
       </section>
-      <!-- main -->
     </div>
 
     <script type="text/template" id="hostmetric-template">

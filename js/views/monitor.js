@@ -47,7 +47,7 @@ var app = app || {};
 
         metricsGraphicClear: function () {
             app.metrics.reset();
-            this.$('#graph').hide();
+            this.$('#chart').hide();
         },
 
         metricsGraphic: function () {
@@ -60,7 +60,7 @@ var app = app || {};
                 }
             });
             if (metric_list.length > 0) {
-                this.$('#graph').show();
+                this.$('#chart').show();
                 d3.json('/api/v1/metric?metrics=' + metric_list, function(data) {
                     nv.addGraph(function() {
                         var chart = nv.models.lineChart()
@@ -83,7 +83,7 @@ var app = app || {};
                     });
                 });
             } else {
-                this.$('#graph').hide();
+                this.$('#chart').hide();
             };
         },
     });
