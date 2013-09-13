@@ -6,15 +6,9 @@ var app = app || {};
 
     var MonitorRouter = Backbone.Router.extend({
         routes: {
-            'metric/:name': 'toggleMetric',
+            'metric/:name': 'metricsShow',
         },
-        toggleMetric: function(name) {
-            var items = app.hostmetrics.where({metric_name:name});
-            app.hostmetrics.remove(items);
-            if (items.length > 0) {
-                items[0].set({state: !items[0].get('state')});
-                app.hostmetrics.add(items[0]);
-            }
+        metricsShow: function() {
             app.metrics.trigger('update');
         },
     });
