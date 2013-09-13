@@ -12,11 +12,12 @@ var app = app || {};
             var items = app.hostmetrics.where({metric:name});
             if (items.length > 0) {
                 items[0].save({
-                    hidden: !items[0].get('hidden')
+                    patch: true,
+                    state: !items[0].get('state')
                 });
             }
             var metric_list = '';
-            items = app.hostmetrics.where({hidden: false})
+            items = app.hostmetrics.where({state: true})
             for (var i = 0; i < items.length; i++) {
                 if (metric_list.length > 0) {
                     metric_list += ',' + items[i].get('metric');

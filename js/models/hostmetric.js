@@ -6,7 +6,8 @@ var app = app || {};
 
     app.HostMetric = Backbone.Model.extend({
         default: {
-            hidden: true,
+            state: false,
+            ttl: 3600,
         },
     });
 })();
