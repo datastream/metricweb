@@ -7,7 +7,7 @@ var app = app || {};
         el: '#graphic',
 
         events: {
-            'click #refreshmetrics': 'metricsShow',
+            'click #refreshmetrics': 'metricsGraphic',
             'click #resetmetrics': 'metricsClear',
         },
 
@@ -15,13 +15,13 @@ var app = app || {};
         },
 
         metricsClear: function () {
-            app.metrics.reset();
+            this.collection.reset();
             this.$('#graph').hide();
         },
 
         metricsGraphic: function () {
             var metric_list = '';
-            app.metrics.each(function(metric) {
+            this.collection.each(function(metric) {
                 if (metric_list.length > 0) {
                     metric_list += ',' + metric.get('key');
                 } else {

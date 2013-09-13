@@ -27,7 +27,7 @@ var app = app || {};
             }
         },
         metricsShow: function () {
-            var view = new app.MetricView();
+            var view = new app.MetricView({collection: app.metrics});
             view.metricsGraphic();
         }
     });
