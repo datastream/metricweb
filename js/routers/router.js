@@ -12,7 +12,7 @@ var app = app || {};
             var items = app.hostmetrics.where({metric:name});
             if (items.length > 0) {
                 items[0].save({
-                    hidden: !this.get('hidden')
+                    hidden: !items[0].get('hidden')
                 });
             }
             var metric_list = '';
@@ -24,11 +24,13 @@ var app = app || {};
                     metric_list = items[i].get('metric');
                 }
             }
-            app.metrics.url = app.metrics.url_api + metric_list;
-            var setHeader = function (xhr) {
-                xhr.setRequestHeader('Accept', 'application/json');
-            };
-            app.metrics.fetch({ beforeSend: setHeader, reset: true});
+            if (metric_list.length > 0) {
+                app.metrics.url = app.metrics.url_api + metric_list;
+                var setHeader = function (xhr) {
+                    xhr.setRequestHeader('Accept', 'application/json');
+                };
+                app.metrics.fetch({ beforeSend: setHeader, reset: true});
+            }
         },
     });
     app.MonitorRouter = new MonitorRouter();
