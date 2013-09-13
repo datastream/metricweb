@@ -8,8 +8,6 @@ var app = app || {};
 
         events: {
             'keypress #search-host': 'searchHost',
-            'click #refreshmetrics': 'metricsGraphic',
-            'click #resetmetrics': 'metricsGraphicClear',
         },
 
         initialize: function () {
