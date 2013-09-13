@@ -29,6 +29,8 @@ var app = app || {};
                     xhr.setRequestHeader('Accept', 'application/json');
                 };
                 app.metrics.fetch({ beforeSend: setHeader, reset: true});
+            } else {
+                this.$('#chart').hide();
             }
         },
     });

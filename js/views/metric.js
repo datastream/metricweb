@@ -57,6 +57,7 @@ var app = app || {};
                 nv.utils.windowResize(chart.update);
                 return chart;
             });
+            this.$('#chart').show();
         },
     });
 })(jQuery);
