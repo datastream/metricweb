@@ -4,7 +4,7 @@ var app = app || {};
 (function ($) {
     'use strict';
     app.MetricView = Backbone.View.extend({
-        el: 'metricgraphic',
+        el: '#metricgraphic',
 
         events: {
             'click #refreshmetrics': 'metricsGraphic',
@@ -41,7 +41,7 @@ var app = app || {};
                         chart.yAxis.tickFormat(function(d) {
                                 return  d3.format(',.2f')(d)
                             });
-                        d3.select('#graph svg').datum(data)
+                        d3.select('#chart svg').datum(data)
                             .transition().duration(500).call(chart);
 
                         nv.utils.windowResize(chart.update);

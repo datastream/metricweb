@@ -28,7 +28,6 @@ var app = app || {};
         },
         metricsShow: function() {
             var view = new app.MetricView();
-            $('#metricgraphic').html('');
             view.metricsGraphic();
         },
     });
