@@ -12,7 +12,7 @@ var app = app || {};
             var items = app.hostmetrics.where({metric_name:name});
             if (items.length > 0) {
                 app.hostmetrics.url = app.hostmetrics.url_api + items[0].get('host_name') + '/metric/' + items[0].get('metric_name');
-                items[0].save({state: !items[0].get('state')}, {patch: true});
+                items[0].set({state: !items[0].get('state')});
             }
             var metric_list = '';
             items = app.hostmetrics.where({state: true})
