@@ -11,10 +11,7 @@ var app = app || {};
         toggleMetric: function(name) {
             var items = app.hostmetrics.where({metric:name});
             if (items.length > 0) {
-                items[0].save({
-                    patch: true,
-                    state: !items[0].get('state')
-                });
+                items[0].save({state: !items[0].get('state')}, {patch:true});
             }
             var metric_list = '';
             items = app.hostmetrics.where({state: true})
