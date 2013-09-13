@@ -17,9 +17,9 @@ var app = app || {};
             return this;
         },
         toggleMetric: function() {
-            app.hostmetric.remove(this.model);
+            app.hostmetrics.remove(this.model);
             this.model.set({state: !items[0].get('state')});
-            app.hostmetric.add(this.model);
+            app.hostmetrics.add(this.model);
             app.metrics.trigger('update');
         },
     });
