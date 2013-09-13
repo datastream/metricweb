@@ -16,7 +16,7 @@ var app = app || {};
             this.$('#chart').hide();
         },
         freshChart: function () {
-            var items = app.hostmetrics.where({metric:name});
+            var items = app.hostmetrics.where({metric_name:name});
             if (items.length > 0) {
                 items[0].save({state: !items[0].get('state')}, {patch:true});
             }
@@ -24,9 +24,9 @@ var app = app || {};
             items = app.hostmetrics.where({state: true})
             for (var i = 0; i < items.length; i++) {
                 if (metric_list.length > 0) {
-                    metric_list += ',' + items[i].get('metric');
+                    metric_list += ',' + items[i].get('metric_name');
                 } else {
-                    metric_list = items[i].get('metric');
+                    metric_list = items[i].get('metric_name');
                 }
             }
             if (metric_list.length > 0) {
