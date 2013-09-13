@@ -16,7 +16,7 @@ var app = app || {};
             this.$('#chart').hide();
         },
         freshChart: function () {
-            app.metrics.tigger('update');
+            app.metrics.trigger('update');
         },
         metricsChart: function () {
             nv.addGraph(function() {

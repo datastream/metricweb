@@ -14,7 +14,7 @@ var app = app || {};
                 app.hostmetrics.url = app.hostmetrics.url_api + items[0].get('host_name') + '/metric/' + items[0].get('metric_name');
                 items[0].save({state: !items[0].get('state')}, {patch: true});
             }
-            app.metrics.tigger('update');
+            app.metrics.trigger('update');
         },
     });
     app.MonitorRouter = new MonitorRouter();
