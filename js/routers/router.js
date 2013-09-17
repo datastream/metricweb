@@ -8,8 +8,9 @@ var app = app || {};
         routes: {
             'metric/:name': 'metricsShow',
         },
-        metricsShow: function() {
-            app.metrics.trigger('update');
+        metricsShow: function(name) {
+            var item = new app.Metric({name: name});
+            app.metrics.add(item);
         },
     });
     app.MonitorRouter = new MonitorRouter();
