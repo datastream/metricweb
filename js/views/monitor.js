@@ -29,9 +29,7 @@ var app = app || {};
             if (e.which !== ENTER_KEY || !this.$input.val().trim()) {
                 return;
             }
-            if (app.hostmetrics.url == null) {
-                app.hostmetrics.url = app.hostmetrics.url_api + this.$input.val().trim() + '/metric'
-            }
+            app.hostmetrics.url = app.hostmetrics.url_api + this.$input.val().trim() + '/metric'
             var setHeader = function (xhr) {
                 xhr.setRequestHeader('Accept', 'application/json');
             };
