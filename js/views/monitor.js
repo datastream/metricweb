@@ -66,11 +66,17 @@ var app = app || {};
                         chart.xAxis.tickFormat(function(d) {
                             return d3.time.format('%m/%d %H:%M')(new Date(d*1000))
                         });
-
+                        var d = []
+                        _.each(data.metrics, function(element, index, list) {
+                            return d.push({
+                                key: element.name,
+                                values: element.values,
+                            });
+                        });
                         chart.yAxis.tickFormat(function(d) {
                             return  d3.format(',.2f')(d)
                         });
-                        d3.select('#chart svg').datum(data.metrics)
+                        d3.select('#chart svg').datum(d)
                             .transition().duration(500).call(chart);
                         nv.utils.windowResize(chart.update);
                         return chart;
