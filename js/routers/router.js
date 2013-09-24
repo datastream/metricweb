@@ -11,6 +11,7 @@ var app = app || {};
         metricsShow: function(name) {
             var item = new app.Metric({name: name});
             app.metrics.add(item);
+            item.save();
         },
     });
     app.MonitorRouter = new MonitorRouter();

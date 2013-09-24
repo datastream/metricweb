@@ -23,6 +23,9 @@ var app = app || {};
         },
 
         render: function() {
+            if (app.metrics.length > 0) {
+                app.metrics.trigger('update');
+            }
         },
 
         searchHost: function (e) {
