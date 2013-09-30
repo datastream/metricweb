@@ -23,6 +23,7 @@ var app = app || {};
         },
 
         render: function() {
+            app.metrics.fetch({reset: true});
             if (app.metrics.length > 0) {
                 app.metrics.trigger('update');
             }
@@ -88,6 +89,10 @@ var app = app || {};
              }
         },
         clearChart: function () {
+            var model;
+            while (model = app.metrics.first()) {
+                model.destroy();
+            }
             app.metrics.reset();
             this.$('#chart').hide();
         },
