@@ -1,4 +1,4 @@
-#global Backbone, jQuery, _, ENTER_KEY 
+#global Backbone, jQuery, _, ENTER_KEY
 app = app or {}
 (($) ->
   "use strict"
@@ -58,7 +58,7 @@ app = app or {}
               d[0]
             ).y((d) ->
               d[1]
-            ).color(d3.scale.category10().range())
+            ).color(d3.scale.category10().range()).margin({left: 100}).useInteractiveGuideline(true)
             chart.xAxis.tickFormat (d) ->
               d3.time.format("%m/%d %H:%M") new Date(d * 1000)
 
